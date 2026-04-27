@@ -102,3 +102,33 @@ Set these backend environment variables in your hosting platform:
 
 Set this in frontend deployment:
 - `VITE_API_BASE_URL=https://your-backend-domain.com`
+
+### Quick Deploy On Render (from GitHub)
+
+This repository now includes `render.yaml` and `Dockerfile` for deployment.
+
+1. Push latest backend changes to GitHub.
+2. In Render, create a new Web Service from your backend repository.
+3. Render auto-detects `render.yaml` and Docker settings.
+4. Set these environment variables in Render:
+  - `DB_URL`
+  - `DB_USERNAME`
+  - `DB_PASSWORD`
+  - `CORS_ALLOWED_ORIGINS=https://your-frontend-domain.com`
+5. Deploy.
+6. Verify health endpoint: `https://your-backend-domain.com/api/health`
+
+### Quick Deploy On Railway (from GitHub)
+
+1. Open Railway dashboard.
+2. New Project -> Deploy from GitHub Repo.
+3. Select this backend repository.
+4. Add environment variables:
+  - `DB_URL`
+  - `DB_USERNAME`
+  - `DB_PASSWORD`
+  - `CORS_ALLOWED_ORIGINS=https://your-frontend-domain.com`
+  - `DDL_AUTO=update`
+  - `SHOW_SQL=false`
+5. Deploy and copy generated backend URL.
+6. Verify health endpoint: `https://your-backend-domain.com/api/health`
